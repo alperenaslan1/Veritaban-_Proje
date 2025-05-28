@@ -1,0 +1,78 @@
+CREATE DATABASE müze_envanter;
+USE müze_envanter;
+
+CREATE TABLE Eserler (
+    eser_id INT PRIMARY KEY,
+    eser_no INT UNIQUE NOT NULL,
+    sira_no INT,
+    envanter_no VARCHAR(20) NOT NULL,
+    adet INT DEFAULT 1,
+    tur_id INT NOT NULL,
+    tarih DATE NOT NULL,
+    yer_id INT NOT NULL,
+    depo_id INT NOT NULL,
+    uzunluk_cm INT,
+    genislik_cm INT,
+    aciklama VARCHAR(100),
+    FOREIGN KEY (tur_id) REFERENCES EserTurleri(tur_id),
+    FOREIGN KEY (yer_id) REFERENCES Yerler(yer_id),
+    FOREIGN KEY (depo_id) REFERENCES Depolar(depo_id)
+);
+
+
+CREATE TABLE EserTurleri (
+    tur_id INT PRIMARY KEY AUTO_INCREMENT,
+    tur_adi VARCHAR(20) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Yerler (
+    yer_id INT PRIMARY KEY AUTO_INCREMENT,
+    yer_adi VARCHAR(100) NOT NULL UNIQUE,
+    bolge_adi VARCHAR(50)
+);
+
+
+CREATE TABLE Depolar (
+    depo_id INT PRIMARY KEY AUTO_INCREMENT,
+    depo_adi VARCHAR(50) NOT NULL,
+    raf_no INT,
+    kat_no INT
+);
+
+
+CREATE TABLE EserAciklamalari (
+    aciklama_id INT PRIMARY KEY AUTO_INCREMENT,
+    eser_id INT NOT NULL,
+    aciklama_tipi VARCHAR(50),
+    aciklama_metni VARCHAR(100),
+    FOREIGN KEY (eser_id) REFERENCES Eserler(eser_id)
+);
+
+
+
+INSERT INTO EserTurleri (tur_adi) VALUES 
+('HALI'), ('KILIM'), ('CİCİM');
+
+
+INSERT INTO Yerler (yer_adi, bolge_adi) VALUES
+('Kastamonu', NULL),
+('Milas Ulu Camii', 'Bah Anadolu'),
+('Elazığ Harput Sare H.Camii', NULL),
+('Kastamonu Nasrullah Camii', NULL),
+('Ankara Çiçekoğlu Camii', NULL),
+('Ç.Iskilip Hacı Şaban Mutaflar C.', NULL),
+('Ankara Telli Haci Halil Camii', NULL),
+('Vakıflar Ankara Bölge Md.', 'D. Anadolu'),
+('Belirtilmemiş', NULL),
+('Ankara Vakıflar Bölge Müdürlüğü', 'D. Anadolu');
+
+
+INSERT INTO Depolar (depo_adi, raf_no, kat_no) VALUES
+('depo 1', 1, 19),
+('depo 1', 1, 20),
+('depo 1', NULL, 18),
+('depo 1', NULL, 19),
+('depo 1', NULL, 20);
+
+
