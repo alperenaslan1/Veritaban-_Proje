@@ -1,8 +1,8 @@
--- 1. Veritabanı oluşturma
+
 CREATE DATABASE IF NOT EXISTS VakifEserleriDB;
 USE VakifEserleriDB;
 
--- 2. Tabloları oluşturma
+
 CREATE TABLE EserTurleri (
     tur_id INT PRIMARY KEY AUTO_INCREMENT,
     tur_adi VARCHAR(20) NOT NULL UNIQUE
@@ -61,29 +61,29 @@ CREATE TABLE EserAciklamalari (
     FOREIGN KEY (eser_id) REFERENCES Eserler(eser_id)
 );
 
--- 3. Referans verileri ekleme
+
 INSERT INTO EserTurleri (tur_adi) VALUES
-('HALI'), ('KILIM'), ('CİCİM'), ('SECCADE'), ('DİĞER');
+('HALI'), ('KILIM'), ('CÃCÃM'), ('SECCADE'), ('DÃÃER');
 
 INSERT INTO Bolgeler (bolge_adi) VALUES
-('Doğu Anadolu'), ('Batı Anadolu'), ('İç Anadolu'), ('Karadeniz'), ('Belirtilmemiş');
+('DoÃ°u Anadolu'), ('BatÃ½ Anadolu'), ('ÃÃ§ Anadolu'), ('Karadeniz'), ('BelirtilmemiÃ¾');
 
 INSERT INTO Yerler (yer_adi, bolge_id, il, ilce) VALUES
 ('Kastamonu Merkez', 4, 'Kastamonu', 'Merkez'),
-('Milas Ulu Camii', 2, 'Muğla', 'Milas'),
-('Elazığ Harput Sare Hatun Camii', 1, 'Elazığ', 'Harput'),
-('Ankara Vakıflar Bölge Müdürlüğü', 3, 'Ankara', 'Çankaya'),
-('Çorum İskilip Hacı Şaban Mutaflar Camii', 4, 'Çorum', 'İskilip'),
-('Belirtilmemiş', 5, NULL, NULL);
+('Milas Ulu Camii', 2, 'MuÃ°la', 'Milas'),
+('ElazÃ½Ã° Harput Sare Hatun Camii', 1, 'ElazÃ½Ã°', 'Harput'),
+('Ankara VakÃ½flar BÃ¶lge MÃ¼dÃ¼rlÃ¼Ã°Ã¼', 3, 'Ankara', 'Ã‡ankaya'),
+('Ã‡orum Ãskilip HacÃ½ Ãaban Mutaflar Camii', 4, 'Ã‡orum', 'Ãskilip'),
+('BelirtilmemiÃ¾', 5, NULL, NULL);
 
 INSERT INTO DepoBolumleri (bolum_adi, kat_no) VALUES
 ('Ana Depo', 18), ('Ana Depo', 19), ('Ana Depo', 20),
-('Özel Eserler', 19), ('Restorasyon', 18);
+('Ã–zel Eserler', 19), ('Restorasyon', 18);
 
 INSERT INTO Raflar (bolum_id, raf_no) VALUES
 (2, 1), (2, 2), (3, 1), (4, 1), (1, 1);
 
--- 4. Eser verilerini ekleme
+
 INSERT INTO Eserler (eser_no, sira_no, envanter_no, adet, tur_id, kayit_tarihi, yer_id, raf_id, uzunluk_cm, genislik_cm, durum) VALUES
 (139050, 49, '37.1337', 1, 2, '2007-07-01', 1, 1, 280, 84, 'Depoda'),
 (139051, 50, '48.06.73', 1, 2, '2007-07-01', 2, 1, 258, 74, 'Depoda'),
@@ -107,11 +107,12 @@ INSERT INTO Eserler (eser_no, sira_no, envanter_no, adet, tur_id, kayit_tarihi, 
 (138458, 27, '06.412', 1, 1, '2007-07-01', 4, 3, 109, 70, 'Depoda'),
 (138149, 28, '06.425', 1, 1, '2007-07-01', 4, 3, 143, 93, 'Depoda');
 
--- 5. Eser açıklamalarını ekleme
+
 INSERT INTO EserAciklamalari (eser_id, aciklama_tipi, aciklama_metni) VALUES
-(2, 'Tarihsel', 'Bahçeli Anadolu kilim desenleri grubuna ait'),
-(3, 'Teknik', 'Yün malzeme, doğal boyalı'),
-(1, 'Koruma', 'UV ışınlarına duyarlı, özel koruma gerektirir'),
-(5, 'Tarihsel', '17. yüzyıl sonu Osmanlı dönemi halısı'),
+(2, 'Tarihsel', 'BahÃ§eli Anadolu kilim desenleri grubuna ait'),
+(3, 'Teknik', 'YÃ¼n malzeme, doÃ°al boyalÃ½'),
+(1, 'Koruma', 'UV Ã½Ã¾Ã½nlarÃ½na duyarlÃ½, Ã¶zel koruma gerektirir'),
+(5, 'Tarihsel', '17. yÃ¼zyÃ½l sonu OsmanlÃ½ dÃ¶nemi halÃ½sÃ½'),
 (7, 'Teknik', 'Renkli cicim dokuma, yerel motifler'),
-(10, 'Tarihsel', 'Ankara bölgesine ait geleneksel desenler');
+(10, 'Tarihsel', 'Ankara bÃ¶lgesine ait geleneksel desenler');
+
